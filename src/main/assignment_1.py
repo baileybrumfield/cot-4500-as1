@@ -6,7 +6,7 @@
 import math
 # define function that converts 64-bit binary number into a floating point number, chops and rounds the number,
 # and computes the absolute and relative error
-def binary_to_decimal():
+def binary_to_float():
     # 1)
     # enter sign (s); 0 for positive and 1 for negative
     s = 0
@@ -30,18 +30,35 @@ def binary_to_decimal():
 
     # plug into formuala to convert 64-bit binary number into a floating point number
     n = ((-1)**s)*(2**(c - 1023))*((1 + f))
-    print("{:.5f}".format(n))
+    print(n)
+    print()
+    
+    number = n
 
     # 2)
     # chopping number at 3 decimal places
     n *= (10 ** -3)
     print((math.floor(n * 1000)) / 1000)
+    print()
 
     # 3)
     # rounding number at 3 decimal places
     n += 0.0005
     print(round(n, ndigits = 3))
+    print()
+
+    # 4)
+    # define function that caculates absolute error
+    def absolute_error(exact: float, approx: float):
+        return abs(exact - approx)
+    print(absolute_error(number, round(number, 0)) / 1000)
+
+    def relative_error(exact: float, approx: float):
+        return abs((absolute_error(exact, approx)) / exact)
+    print(relative_error(number, round(number, 0)))
+    
+
     return
 
-binary_to_decimal()
+binary_to_float()
 
