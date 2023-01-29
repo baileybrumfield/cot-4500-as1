@@ -113,6 +113,7 @@ def number_6():
     print()
     
     print(newton_raphson_method(f_x,df_dx, 7, 0.0001))
+    print()
 # questions 1-4
 binary_to_float()
 
